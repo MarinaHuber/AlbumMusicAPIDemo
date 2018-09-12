@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDAlbumInfo" representedClassName="CDAlbumInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="albumName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageURLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mbid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDArtist" inverseName="albums" inverseEntity="CDArtist" syncable="YES"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDTrack" inverseName="album" inverseEntity="CDTrack" syncable="YES"/>
+    </entity>
+    <entity name="CDArtist" representedClassName="CDArtist" syncable="YES" codeGenerationType="class">
+        <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="albums" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDAlbumInfo" inverseName="artist" inverseEntity="CDAlbumInfo" syncable="YES"/>
+    </entity>
+    <entity name="CDTrack" representedClassName="CDTrack" syncable="YES" codeGenerationType="class">
+        <attribute name="trackName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAlbumInfo" inverseName="tracks" inverseEntity="CDAlbumInfo" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDAlbumInfo" positionX="-263" positionY="-120" width="128" height="120"/>
+        <element name="CDArtist" positionX="-497" positionY="-132" width="128" height="75"/>
+        <element name="CDTrack" positionX="48" positionY="-38" width="128" height="75"/>
+    </elements>
+</model>

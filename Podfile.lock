@@ -1,0 +1,19 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
+  - SHSearchBar (1.4.3)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - AlamofireImage (~> 3.3)
+  - SHSearchBar
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  SHSearchBar: 3baed40087fe5501c904763a34a6a69f851e906b
+
+PODFILE CHECKSUM: e726364920e9911a137684fb49da3d6294c20f41
+
+COCOAPODS: 1.4.0
