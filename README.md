@@ -1,7 +1,7 @@
 Album Photo App Demo
 ==========
 
-Basic Album iOS app in Swift :)
+Basic Album iOS app in Swift with CoreData 
 
 
 ## Requirements
@@ -23,7 +23,7 @@ but the identifier is missing so there is no Albums in detail screen
 ## - Persistent data: Core Data
 
 Saving AlbumInfo object and deleting it with identifier MBID
-1. fetch.albumsInfo (Main View Controller is only visible if user navigate back button as this is the storage vc)
+1. fetch.albumsInfo (Main View Controller is visible if user navigate back)
 2. delete.albumInfo managed object
 
 ## The basic user flow in place:
