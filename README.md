@@ -41,7 +41,7 @@ SHSearchBar
 
 ## shortcomings:
 - Connecting APIClient and APIRouter was not finished successfully so I went end finished all through
-  APIClient instead ( refactoring )
+  APIClient instead ( refactoring )- fixed
 - Error handling is not implemented fully
 - AlbumsViewController has logic for shoving bookmark indictor from detailVC- this was required to be view controller to delete the call from saving  to core data, I was not sure on that one.  - fixed
 
