@@ -48,7 +48,7 @@ extension CDAlbumInfo {
 		return []
 	}
 
-	static func albumWithID ( _ id : String ) -> CDAlbumInfo? {
+	static func albumWithID ( _ id:String) -> CDAlbumInfo? {
 
 		let request : NSFetchRequest<CDAlbumInfo> = CDAlbumInfo.fetchRequest()
 		request.predicate = NSPredicate(format: "mbid = [cd] %@", id)

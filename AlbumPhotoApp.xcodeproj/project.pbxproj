@@ -23,7 +23,6 @@
 		9CBBD13E212386DC00333E21 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD13D212386DC00333E21 /* APIClient.swift */; };
 		9CBBD1472123872B00333E21 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD13F2123872A00333E21 /* AlbumInfo.swift */; };
 		9CBBD1492123872B00333E21 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD1422123872A00333E21 /* Album.swift */; };
-		9CBBD14A2123872B00333E21 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD1432123872B00333E21 /* DateFormatter.swift */; };
 		9CBBD14B2123872B00333E21 /* AlbumInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD1442123872B00333E21 /* AlbumInfo.xcdatamodeld */; };
 		9CBBD14C2123872B00333E21 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD1462123872B00333E21 /* Image.swift */; };
 		9CBBD14E212387E600333E21 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBBD14D212387E600333E21 /* Artist.swift */; };
@@ -54,7 +53,6 @@
 		9CBBD13D212386DC00333E21 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9CBBD13F2123872A00333E21 /* AlbumInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
 		9CBBD1422123872A00333E21 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		9CBBD1432123872B00333E21 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		9CBBD1452123872B00333E21 /* AlbumInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbumInfo.xcdatamodel; sourceTree = "<group>"; };
 		9CBBD1462123872B00333E21 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		9CBBD14D212387E600333E21 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				9CBBD14D212387E600333E21 /* Artist.swift */,
 				9CBBD13F2123872A00333E21 /* AlbumInfo.swift */,
 				9CBBD1462123872B00333E21 /* Image.swift */,
-				9CBBD1432123872B00333E21 /* DateFormatter.swift */,
 				9C334FF62124779500193C59 /* Albums-Extension.swift */,
 			);
 			path = Models;
@@ -330,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CBBD14A2123872B00333E21 /* DateFormatter.swift in Sources */,
 				9CBBD14C2123872B00333E21 /* Image.swift in Sources */,
 				9CF9F89521256D81008B6768 /* View+Animate.swift in Sources */,
 				9CB43B5A2120734C0051CD53 /* SearchCell.swift in Sources */,

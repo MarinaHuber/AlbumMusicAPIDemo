@@ -16,8 +16,6 @@ class Context {
 	private static let shared = Context()
 
 	static let managedObjectContext = Context.shared.persistentContainer.viewContext
-
-	// ??is this child context pattern ? When I need multiple background contexts???
 	static let managedObjectContextBg = Context.shared.persistentContainer.newBackgroundContext()
 
 	static func saveContext() {
@@ -72,22 +70,30 @@ class Context {
 	}
 
 
-//MARK: - perform methods
+	//MARK: - perform methods
 	static func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-		Context.shared.persistentContainer.performBackgroundTask(block)
+		// .performAndWait blocks the main thread and perform does it parallel
+		Context.managedObjectContextBg.perform {
+			block(Context.managedObjectContextBg)
+		}
 	}
 
 	static func performViewTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-		block(Context.shared.persistentContainer.viewContext)
+		Context.managedObjectContext.perform {
+			block(Context.managedObjectContext)
+		}
+
 	}
 
-	//NOTE: Use it on main or sync
-	//	DispatchQueue.main.async {
-	//	Context.shared.performViewTask { (context) in
-	//	   }
-	//	}
-
-
+	/*
+	Alamofire.downloadData() { data in
+	Context.performBackgorundTask() { moc in
+	parse json from data
+	//import into coredata
+	moc.save()
+	DispatchQueue.main.async { //update UI }
+	}
+	*/
 
 }
 
