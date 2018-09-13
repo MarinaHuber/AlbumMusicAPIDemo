@@ -9,8 +9,12 @@
 import UIKit
 import  SHSearchBar
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SHSearchBarDelegate {
+protocol AlbumDelegate {
+	func updateTitle(_ byArtist: String?, isSearch: Bool)
+}
 
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SHSearchBarDelegate {
+    var albumDelegate: AlbumDelegate?
 	@IBOutlet weak var searchTableView: UITableView!
 	private var artists: Array<ArtistElement> = []
 
@@ -128,6 +132,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 				let artist = artists[indexPath.row]
 				let vc = segue.destination as! AlbumViewController
 				vc.nameID = artist.nameID
+				albumDelegate?.updateTitle(vc.nameID, isSearch: true)
 			}
 		}
 

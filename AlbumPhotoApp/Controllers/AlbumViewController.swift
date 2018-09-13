@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
+//AlbumDelegate not used
 
+class AlbumViewController: UIViewController, UITableViewDelegate, AlbumDelegate {
 
-class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-	var detailVC: DetailViewController!
+	var searchVC: SearchViewController!
 	@IBOutlet weak var albumTableView: UITableView!
 	var nameID: String?
 	private var albums: Array<AlbumName> = []
@@ -25,6 +25,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		searchVC?.albumDelegate = self
 		navigationController?.navigationBar.topItem?.title = ""
 		showAlbums()
 
@@ -70,26 +71,12 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
 		})
 		
 	}
-	
-	// MARK: - Table view data source and delegate
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return albums.count
-	}
-	
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let artistAlbumData = albums[indexPath.row]
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cellAlbum", for: indexPath) as? AlbumCell ?? AlbumCell()
+//TODO: show title befor with protocol, never goes here
+	func updateTitle(_ byArtist: String?, isSearch: Bool) {
 
-		let exists = CDAlbumInfo.isAlbumBookmarked(artistAlbumData.albumID ?? "")
-		cell.bookmarkAlbums.image = UIImage(named: exists ? "bookmarked" : "un_bookmark")
-		cell.textLabel?.text = artistAlbumData.name
-
-		cell.contentView.backgroundColor = UIColor.clear
-		cell.backgroundColor = UIColor.clear
-		
-		return cell
+			if isSearch {
+			navigationController?.navigationBar.topItem?.title = byArtist
+		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,6 +90,31 @@ class AlbumViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
 	}
 	
+}
+
+
+
+// MARK: - Table view data source and delegate
+extension AlbumViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return albums.count
+	}
+
+
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let artistAlbumData = albums[indexPath.row]
+		navigationController?.navigationBar.topItem?.title = artistAlbumData.artist.name
+		let cell = tableView.dequeueReusableCell(withIdentifier: "cellAlbum", for: indexPath) as? AlbumCell ?? AlbumCell()
+
+		let exists = CDAlbumInfo.isAlbumBookmarked(artistAlbumData.albumID ?? "")
+		cell.bookmarkAlbums.image = UIImage(named: exists ? "bookmarked" : "un_bookmark")
+		cell.textLabel?.text = artistAlbumData.name
+
+		cell.contentView.backgroundColor = UIColor.clear
+		cell.backgroundColor = UIColor.clear
+
+		return cell
+	}
 }
 
 
@@ -124,13 +136,6 @@ class AlbumCell: UITableViewCell {
 
 	}
 
-	func album(isSaved: Bool){
-		if !isSaved {
-			bookmarkAlbums.image = UIImage(named: "un_bookmark")
-		} else {
-			bookmarkAlbums.image = UIImage(named: "un_bookmark")
-		}
-	}
 	
 }
 
@@ -146,17 +151,6 @@ extension AlbumViewController: NSFetchedResultsControllerDelegate {
 	//	}
 	//
 	//	func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-	//		switch type {
-	//		case .insert:
-	//			if let indexPath = newIndexPath {
-	//				feedView.insertRows(at: [indexPath], with: .fade)
-	//			}
-	//		case .update:
-	//			if let indexPath = indexPath, let cell = feedView.cellForRow(at: indexPath) as? PostTableViewCell {
-	//				configureCell(cell: cell, atIndexPath: indexPath)
-	//			}
-	//		default: break
-	//		}
 	//
 	//	}
 	//
