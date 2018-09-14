@@ -12,8 +12,17 @@ import CoreData
 //AlbumDelegate not used
 
 class AlbumViewController: UIViewController, UITableViewDelegate, AlbumDelegate {
+//TODO: show title befor with protocol, never goes here
+// MARK: Album Delegate required method
 
-	var searchVC: SearchViewController!
+	func updateTitle(_ byArtist: String?, isSearch: Bool) {
+		if isSearch {
+			navigationController?.navigationBar.topItem?.title = byArtist
+		}
+	}
+
+
+	var searchVC = SearchViewController()
 	@IBOutlet weak var albumTableView: UITableView!
 	var nameID: String?
 	private var albums: Array<AlbumName> = []
@@ -25,7 +34,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, AlbumDelegate 
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		searchVC?.albumDelegate = self
+		searchVC.albumDelegate = self
 		navigationController?.navigationBar.topItem?.title = ""
 		showAlbums()
 
@@ -71,14 +80,7 @@ class AlbumViewController: UIViewController, UITableViewDelegate, AlbumDelegate 
 		})
 		
 	}
-//TODO: show title befor with protocol, never goes here
-	func updateTitle(_ byArtist: String?, isSearch: Bool) {
 
-			if isSearch {
-			navigationController?.navigationBar.topItem?.title = byArtist
-		}
-	}
-	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if (segue.identifier == "segueInfoAlbum") {
 			if let indexPath = albumTableView.indexPathForSelectedRow {
