@@ -67,7 +67,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 				self.reloadUI()
 			})
 			} else {
-				self.alert(message: "No artist found", title: "Artist unknown")
+				    self.alert(message: "No artist found", title: "Artist unknown")
 
 		     }
 	}

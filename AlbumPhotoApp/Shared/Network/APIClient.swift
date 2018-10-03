@@ -24,17 +24,18 @@ class APIClient {
 				let decoder = JSONDecoder()
 				let artistsDecoded = try decoder.decode(Artist.self, from: data)
 				let artists = artistsDecoded.results.artistmatches
+				//ADDTHIS to demo on desktop
 				DispatchQueue.main.async() {
 					for artist in artists.artist {
 						print(artist.name)
-
-						completionHandler(artists.artist, nil)
-
-
 					}
+					_ = artists.artist.filter { artist in
+						return artist.name != "(null)"
+					}
+					completionHandler(artists.artist, nil)
 				}
-
-			} catch {
+				// this patch and same for albums
+			} catch let error {
 				completionHandler([], error)
 				print("Error serializing json:", error)
 				//Error response check
